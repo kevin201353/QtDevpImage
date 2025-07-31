@@ -3,7 +3,7 @@
 
 #include <QObject>
 
-class CImageMetic
+class CImageMetic:QObject
 {
     Q_OBJECT
 public:
