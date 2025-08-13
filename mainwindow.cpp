@@ -7,6 +7,15 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    m_histogram = new HistoGram(this);
+    m_histogram->resize(400,300);
+   // m_histogram->move(10,50);
+    m_histogram->show();
+    QHBoxLayout *hlayout = new QHBoxLayout(this);
+    hlayout->setContentsMargins(0,90,400,300);
+    hlayout->addWidget(m_histogram);
+    this->setLayout(hlayout);
+    connect(m_histogram, &HistoGram::hotKeyPressed, this, &OnCheckWindow);
 }
 
 MainWindow::~MainWindow()
@@ -27,10 +36,21 @@ void MainWindow::on_LoadImage_clicked()
 
 void MainWindow::on_Histogram_clicked()
 {
-
+    showHistogram(m_image);
 }
 
 void MainWindow::on_HistogramAvr_clicked()
 {
 
+}
+
+void MainWindow::showHistogram(QImage grayimage)
+{
+
+}
+
+void MainWindow::OnCheckWindow()
+{
+    QMessageBox message(QMessageBox::NoIcon, "Title","Content with icon 222.");
+    message.exec();
 }
